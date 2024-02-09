@@ -11,7 +11,7 @@ import { RequestsService } from '../../service/requests.service';
   styleUrl: './home-carousel.component.css'
 })
 export class HomeCarouselComponent implements OnChanges {
-  slidelist: { src: String, text: String }[] = [];
+  slidelist: { img_src: String, name: String }[] = [];
   slideIndex: number = 1;
 
   constructor(private request_service: RequestsService) {

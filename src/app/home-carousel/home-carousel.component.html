@@ -2,20 +2,20 @@
   <div *ngFor="let slide of slidelist; index as i">
 
     <div *ngIf="i == 0" class="slide relative">
-      <img class="w-full aspect-[2.05] object-cover" [src]="slide.src" />
+      <img class="w-full aspect-[2.05] object-cover" [src]="slide.img_src" />
       <div
         class="absolute bottom-0 w-full px-5 py-3 bg-black/40 text-center text-white"
       >
-        {{ slide.text }}
+        {{ slide.name }}
       </div>
     </div>
 
     <div *ngIf="i != 0" class="hidden slide relative">
-      <img class="w-full aspect-[2.05] object-cover" [src]="slide.src" />
+      <img class="w-full aspect-[2.05] object-cover" [src]="slide.img_src" />
       <div
         class="absolute bottom-0 w-full px-5 py-3 bg-black/40 text-center text-white"
       >
-        {{ slide.text }}
+        {{ slide.name }}
       </div>
     </div>
   </div>
