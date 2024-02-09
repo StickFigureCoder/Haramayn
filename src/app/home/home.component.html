@@ -20,7 +20,7 @@
   </div>
 
   <div class="grid grid-cols-3 mx-auto max-w-[90%] px-2 sm:px-6 lg:px-8">
-    <div class="px-4 py-20" *ngFor="let category of categories_list">
+    <div class="px-4 py-20 hover:scale-125 duration-500" *ngFor="let category of categories_list">
       <img class="aspect-square w-full" [src]="category.img_src" />
       <p class="text-center font-semibold">{{ category.name }}</p>
     </div>
@@ -51,7 +51,7 @@
     class="grid grid-cols-3 max-md:grid-cols-1 mx-auto max-w-[90%] px-2 sm:px-6 lg:px-8 mt-20"
   >
     <div
-      class="px-4 py-20 lg:hover:-mt-20"
+      class="px-4 py-20 lg:hover:-mt-20 duration-500"
       *ngFor="let latest_arrival of latest_arrivals_list"
     >
       <img class="aspect-[1/1.5] w-full" [src]="latest_arrival.img_src" />
@@ -81,7 +81,7 @@
   </div>
 
   <div class="grid grid-cols-3 mx-auto max-w-[90%] px-2 sm:px-6 lg:px-8">
-    <div class="px-4 py-20" *ngFor="let our_products of our_products_list">
+    <div class="px-4 py-20 hover:scale-125 duration-500" *ngFor="let our_products of our_products_list">
       <img class="aspect-square w-full" [src]="our_products.img_src" />
       <p class="font-semibold">{{ our_products.name }}</p>
       <p>{{ our_products.price }}</p>
