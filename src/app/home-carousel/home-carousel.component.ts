@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnChanges } from '@angular/core';
 import { RequestsService } from '../../service/requests.service';
+import { ProductImageAndTitle } from '../../service/constants.service';
 
 @Component({
   selector: 'app-home-carousel',
@@ -11,7 +12,7 @@ import { RequestsService } from '../../service/requests.service';
   styleUrl: './home-carousel.component.css'
 })
 export class HomeCarouselComponent implements OnChanges {
-  slidelist: { img_src: String, name: String }[] = [];
+  slidelist: ProductImageAndTitle[] = [];
   slideIndex: number = 1;
 
   constructor(private request_service: RequestsService) {

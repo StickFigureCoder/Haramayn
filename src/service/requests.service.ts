@@ -1,73 +1,100 @@
 import { Injectable } from '@angular/core';
-import { ConstantsService } from './constants.service';
+import { ConstantsService, ProductListResponse, ProductImageAndTitle, ProductImageAndTitleResponse, ProductImageResponse, ProductImage, ProductImageAndTitleAndPrice, ProductImageAndTitleAndPriceResponse } from './constants.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestsService {
 
-  constructor(private constant_service: ConstantsService) { }
+  constructor(private constant_service: ConstantsService, private http: HttpClient) { }
 
   getSlidesList() {
-    return [
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-1.jpeg",
-        name: "Flower 1"
-      },
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-2.jpeg",
-        name: "Flower 2"
-      },
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-3.jpeg",
-        name: "Flower 3"
-      },
-    ];
+    let final_url = this.constant_service.PRODUCTS_URL + "?limit=10&skip=10&select=images,title"
+    var output_list: ProductImageAndTitle[] = [];
+    
+    this.http
+    .get<ProductListResponse<ProductImageAndTitleResponse>>(final_url)
+    .subscribe( 
+      response => { 
+        response.products.map( item => {   
+          
+          output_list.push({
+            id: item.id,
+            image: item.images[0],
+            title: item.title
+          }); 
+        
+        })
+      });
+    
+    return output_list
   }
 
   getCatagoryList() {
-    return [
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-1.jpeg",
-        name: "Flower 1"
-      },
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-2.jpeg",
-        name: "Flower 2"
-      },
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-3.jpeg",
-        name: "Flower 3"
-      }
-    ]
+    let final_url = this.constant_service.PRODUCTS_URL + "?limit=3&skip=10&select=images,title"
+    var output_list: ProductImageAndTitle[] = [];
+    
+    this.http
+    .get<ProductListResponse<ProductImageAndTitleResponse>>(final_url)
+    .subscribe( 
+      response => { 
+        response.products.map( item => {   
+          
+          output_list.push({
+            id: item.id,
+            image: item.images[0],
+            title: item.title
+          }); 
+        
+        })
+      });
+    
+    return output_list
   }
 
   getLatestArrivalList() {
-    return [
-      { img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-1.jpeg" },
-      { img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-2.jpeg" },
-      { img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-3.jpeg" }
-    ]
+    let final_url = this.constant_service.PRODUCTS_URL + "?limit=3&skip=10&select=images"
+    var output_list: ProductImage[] = [];
+    
+    this.http
+    .get<ProductListResponse<ProductImageResponse>>(final_url)
+    .subscribe( 
+      response => { 
+        response.products.map( item => {   
+          
+          output_list.push({
+            id: item.id,
+            image: item.images[0]
+          }); 
+        
+        })
+      });
+    
+    return output_list
   }
 
   getOurproductsList() {
-    return [
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-1.jpeg",
-        name: "Flower 1",
-        price: 99.99
-      },
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-2.jpeg",
-        name: "Flower 2",
-        price: 99.99
-      },
-      {
-        img_src: "https://www.kindacode.com/wp-content/uploads/2022/07/flower-3.jpeg",
-        name: "Flower 3",
-        price: 99.99
-      },
-    ]
+    let final_url = this.constant_service.PRODUCTS_URL + "?limit=3&skip=10&select=images"
+    var output_list: ProductImageAndTitleAndPrice[] = [];
+    
+    this.http
+    .get<ProductListResponse<ProductImageAndTitleAndPriceResponse>>(final_url)
+    .subscribe( 
+      response => { 
+        response.products.map( item => {   
+          
+          output_list.push({
+            id: item.id,
+            image: item.images[0],
+            title: item.title,
+            price: item.price
+          }); 
+        
+        })
+      });
+    
+    return output_list
   }
 
 }

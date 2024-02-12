@@ -3,6 +3,7 @@ import { HomeCarouselComponent } from '../home-carousel/home-carousel.component'
 import { RequestsService } from '../../service/requests.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ProductImage, ProductImageAndTitle, ProductImageAndTitleAndPrice } from '../../service/constants.service';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  categories_list: { img_src: String, name: String }[] = [];
-  latest_arrivals_list: { img_src: String }[] = []
-  our_products_list: { img_src:String, name: String, price: number }[] = [];
+  categories_list: ProductImageAndTitle[] = [];
+  latest_arrivals_list: ProductImage[] = []
+  our_products_list: ProductImageAndTitleAndPrice[] = [];
 
   constructor(private requests_service: RequestsService) {
     this.categories_list = this.requests_service.getCatagoryList();
