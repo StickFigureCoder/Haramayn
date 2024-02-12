@@ -21,7 +21,7 @@ export class NavigationBarComponent {
 
   toggle_search() {
     this.show_search = !this.show_search;
-    if (this.show_search) {
+    if (this.show_sidebar) {
       this.show_sidebar = false
     }
   }
