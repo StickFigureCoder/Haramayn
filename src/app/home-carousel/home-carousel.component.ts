@@ -16,7 +16,21 @@ export class HomeCarouselComponent implements OnChanges {
   slideIndex: number = 1;
 
   constructor(private request_service: RequestsService) {
-    this.slidelist = this.request_service.getSlidesList();
+    this.request_service.getSlidesList()
+    .subscribe( 
+      response => { 
+        this.slidelist = [];
+        response.products.map( item => {   
+          
+          this.slidelist.push({
+            id: item.id,
+            // image: item.images[0],
+            image: "https://dummyjson.com/image/1080x540",
+            title: item.title
+          }); 
+        
+        })
+      });
   }
 
   ngOnChanges(): void {

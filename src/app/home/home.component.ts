@@ -18,9 +18,57 @@ export class HomeComponent {
   our_products_list: ProductImageAndTitleAndPrice[] = [];
 
   constructor(private requests_service: RequestsService) {
-    this.categories_list = this.requests_service.getCatagoryList();
-    this.latest_arrivals_list = this.requests_service.getLatestArrivalList();
-    this.our_products_list = this.requests_service.getOurproductsList();
+    
+    // Get Catagory List
+    this.requests_service.getCatagoryList()
+    .subscribe( 
+      response => { 
+        this.categories_list = [];
+        response.products.map( item => {   
+          
+          this.categories_list.push({
+            id: item.id,
+            // image: item.images[0],
+            image: "https://dummyjson.com/image/500",
+            title: item.title
+          }); 
+        
+        })
+      });
+    
+    // Get Latest Arrival
+    this.requests_service.getLatestArrivalList()
+    .subscribe( 
+      response => { 
+        this.latest_arrivals_list = [];
+        response.products.map( item => {   
+          
+          this.latest_arrivals_list.push({
+            id: item.id,
+            // image: item.images[0],
+            image: "https://dummyjson.com/image/400x600"
+          }); 
+        
+        })
+      });
+    
+    // Get Product List
+    this.requests_service.getOurproductsList()
+    .subscribe( 
+      response => { 
+        this.our_products_list = [];
+        response.products.map( item => {
+          
+          this.our_products_list.push({
+            id: item.id,
+            // image: item.images[0],
+            image: "https://dummyjson.com/image/500",
+            title: item.title,
+            price: item.price
+          }); 
+        
+        })
+      });
   }
 
 }
