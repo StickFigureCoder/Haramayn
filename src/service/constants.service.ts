@@ -51,13 +51,6 @@ export interface ProductListResponse<T> {
   total: number,
 }
 
-// -----------------------------------------------------------------------------
-export interface ShopProductOutputList {
-  output_list: ProductImageAndTitleAndPrice[], 
-  total_pages: number
-}
-// -----------------------------------------------------------------------------
-
 @Injectable({
   providedIn: 'root'
 })

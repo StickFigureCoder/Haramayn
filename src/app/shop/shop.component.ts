@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductImageAndTitleAndPrice, ShopProductOutputList } from '../../service/constants.service';
+import { ProductImageAndTitleAndPrice } from '../../service/constants.service';
 import { RequestsService } from '../../service/requests.service';
 import { CommonModule } from '@angular/common';
 

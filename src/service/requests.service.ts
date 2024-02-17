@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConstantsService, ProductListResponse, ProductImageAndTitle, ProductImageAndTitleResponse, ProductImageResponse, ProductImage, ProductImageAndTitleAndPrice, ProductImageAndTitleAndPriceResponse, ShopProductOutputList } from './constants.service';
+import { ConstantsService, ProductListResponse, ProductImageAndTitleResponse, ProductImageResponse, ProductImageAndTitleAndPriceResponse } from './constants.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
