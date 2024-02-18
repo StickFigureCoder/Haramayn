@@ -1,1 +1,27 @@
-<p>blog works!</p>
+<div class="aspect-[4/1] w-full">
+  <div class="lg:w-1/3 mx-auto text-center pt-20 text-6xl font-semibold">
+    Favorites
+  </div>
+  <div class="lg:w-1/3 mx-auto text-center pt-4">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.</p>
+    <a routerLink="/shop">
+      <button
+        class="mt-4 border-2 border-black hover:border-blue-500 hover:text-blue-500 px-16 py-4 font-semibold"
+      >
+        Shop All
+      </button>
+    </a>
+  </div>
+</div>
+
+<div class="grid grid-cols-3 mx-auto max-w-[90%] px-2 sm:px-6 lg:px-8">
+  <div
+    class="px-4 py-20 hover:scale-125 duration-500"
+    *ngFor="let product of favorite_product_list"
+  >
+    <img class="aspect-square w-full" [src]="product.image" />
+    <p class="font-semibold">{{ product.title }}</p>
+    <p>{{ product.price }}</p>
+  </div>
+</div>
