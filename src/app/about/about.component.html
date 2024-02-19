@@ -9,7 +9,10 @@
 </div>
 
 <div class="grid grid-cols-3 mx-auto max-w-[90%] px-2 sm:px-6 lg:px-8">
-  <div class="px-4 py-20 hover:scale-125 duration-500" *ngFor="let item of about_us_image_list">
+  <div
+    class="px-4 py-20 hover:scale-125 duration-500"
+    *ngFor="let item of about_us_image_list"
+  >
     <img class="aspect-square w-full" [src]="item.image" />
   </div>
 </div>
