@@ -2,22 +2,23 @@ import { Component } from '@angular/core';
 import { ProductImageAndTitleAndPrice } from '../../service/constants.service';
 import { RequestsService } from '../../service/requests.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 const LIMIT = 9;
 
 @Component({
   selector: 'app-shop',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.css'
 })
 export class ShopComponent {
   shop_products_list: ProductImageAndTitleAndPrice[] = [];
-  skip = 0
-  current_page = 1
-  total_pages = 0
-  total_results = 0
+  skip: number = 0
+  current_page: number = 1
+  total_pages: number = 0
+  total_results: number = 0
 
   constructor(private requests_service: RequestsService) {
     this.updateProductList();

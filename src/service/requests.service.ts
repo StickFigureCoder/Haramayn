@@ -5,6 +5,7 @@ import {
   ProductImageAndTitleResponse,
   ProductImageResponse,
   ProductImageAndTitleAndPriceResponse,
+  SingleProductResponse,
 } from './constants.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -16,6 +17,11 @@ export class RequestsService {
     private constant_service: ConstantsService,
     private http: HttpClient
   ) {}
+
+  getProductFromId(id: number) {
+    let final_url = this.constant_service.PRODUCTS_URL + "/" + id;    
+    return this.http.get<SingleProductResponse>(final_url);
+  }
 
   getSlidesList() {
     let final_url =
