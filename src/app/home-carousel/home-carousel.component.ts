@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnChanges } from '@angular/core';
 import { RequestsService } from '../../service/requests.service';
-import { ProductImageAndTitle } from '../../service/constants.service';
+import { Product } from '../../service/constants.service';
 
 @Component({
   selector: 'app-home-carousel',
@@ -12,7 +12,7 @@ import { ProductImageAndTitle } from '../../service/constants.service';
   styleUrl: './home-carousel.component.css'
 })
 export class HomeCarouselComponent implements OnChanges {
-  slidelist: ProductImageAndTitle[] = [];
+  slidelist: Product[] = [];
   slideIndex: number = 1;
 
   constructor(private request_service: RequestsService) {
@@ -24,8 +24,7 @@ export class HomeCarouselComponent implements OnChanges {
           
           this.slidelist.push({
             id: item.id,
-            // image: item.images[0],
-            image: "https://dummyjson.com/image/1080x540",
+            thumbnail: "https://dummyjson.com/image/1080x540",
             title: item.title
           }); 
         

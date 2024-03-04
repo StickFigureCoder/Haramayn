@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProductImage } from '../../service/constants.service';
+import { Product } from '../../service/constants.service';
 import { RequestsService } from '../../service/requests.service';
 import { CommonModule } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './about.component.css'
 })
 export class AboutComponent {
-  about_us_image_list: ProductImage[] = [];
+  about_us_image_list: Product[] = [];
 
   constructor(private request_service: RequestsService) {
     this.request_service.getLatestArrivalList().subscribe(
@@ -23,7 +23,7 @@ export class AboutComponent {
               {
                 id: item.id,
                 // image: item.images[0],
-                image: "https://dummyjson.com/image/500"
+                thumbnail: "https://dummyjson.com/image/500"
               }
             )
           }

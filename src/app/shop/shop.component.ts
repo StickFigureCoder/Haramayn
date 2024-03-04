@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ProductImageAndTitleAndPrice } from '../../service/constants.service';
+import { Component, signal } from '@angular/core';
+import { Product } from '../../service/constants.service';
 import { RequestsService } from '../../service/requests.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -14,40 +14,47 @@ const LIMIT = 9;
   styleUrl: './shop.component.css'
 })
 export class ShopComponent {
-  shop_products_list: ProductImageAndTitleAndPrice[] = [];
+  shop_products_list = signal<Product[]>([]);
   skip: number = 0
   current_page: number = 1
   total_pages: number = 0
-  total_results: number = 0
+  total_results = 0
 
   constructor(private requests_service: RequestsService) {
     this.updateProductList();
   }
 
   updateProductList() {
-    this.requests_service.getShopProductsList(LIMIT, this.skip).subscribe( 
-      response => {
-        this.shop_products_list = [];
 
-        response.products.map( item => {   
 
-          this.shop_products_list.push({
-            id: item.id,
-            // image: item.images[0],
-            image: "https://dummyjson.com/image/250",
-            title: item.title,
-            price: item.price
-          }); 
-
-          this.total_results = response.total;
-
-          this.total_pages = response.total / 9;
-          
-          if ( this.total_pages.toFixed(0) != this.total_pages.toString() ) {
-            this.total_pages += 1;
-          }
-        })
+    this.requests_service.getShopProductsList(LIMIT, this.skip)
+    .subscribe( response => {
+      
+      // Process response into new shoping list.
+      var new_list = response.products
+      .map( item => { 
+        return {
+          id: item.id,
+          price: item.price,
+          thumbnail: "https://dummyjson.com/image/500",
+          title: item.title
+        }
       });
+      
+      // Update Shoping List
+      this.shop_products_list.set(new_list);
+
+
+      this.total_results = response.total;
+
+      this.total_pages = response.total / 9;
+          
+      if ( this.total_pages.toFixed(0) != this.total_pages.toString() ) {
+        this.total_pages += 1;
+      }
+    
+    });
+
   }
 
   onClickNext() {

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RequestsService } from '../../service/requests.service';
-import { SingleProductResponse } from '../../service/constants.service';
-import { Subject } from 'rxjs';
 import { CommonModule } from '@angular/common';
+
+import { RequestsService } from '../../service/requests.service';
+import { Product } from '../../service/constants.service';
 
 @Component({
   selector: 'app-product-display',
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-display.component.css',
 })
 export class ProductDisplayComponent {
-  product_details: SingleProductResponse = {
+  product_details = signal<Product>({
     id: 0,
     title: '',
     description: '',
@@ -25,20 +25,20 @@ export class ProductDisplayComponent {
     category: '',
     thumbnail: '',
     images: [],
-  };
+  });
 
   constructor(
     private route: ActivatedRoute,
     private request_service: RequestsService
   ) {
     this.route.params.subscribe({
-      next: (value) => this.updateProduceDetails(value["id"])
+      next: (value) => this.updateProduceDetails(value['id']),
     });
   }
 
   updateProduceDetails(product_id: number) {
     this.request_service.getProductFromId(product_id).subscribe({
-      next: response => this.product_details = response
+      next: (response) => (this.product_details.set(response)),
     });
   }
 }

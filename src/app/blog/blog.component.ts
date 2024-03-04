@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ProductImageAndTitleAndPrice } from '../../service/constants.service';
+import { Product } from '../../service/constants.service';
 import { RequestsService } from '../../service/requests.service';
 
 @Component({
@@ -11,25 +11,17 @@ import { RequestsService } from '../../service/requests.service';
   styleUrl: './blog.component.css'
 })
 export class BlogComponent {
-  favorite_product_list: ProductImageAndTitleAndPrice[] = [];
+  favorite_product_list: Product[] = [];
 
   constructor(private request_service: RequestsService) {
     this.request_service.getOurproductsList().subscribe(
-      response => {
-        this.favorite_product_list = [];
-        response.products.map(
-          item => {
-            this.favorite_product_list.push(
-              {
-                id: item.id,
-                title: item.title,
-                price: item.price,
-                // image: item.images[0],
-                image: "https://dummyjson.com/image/500"
-              }
-            )
-          }
-        )
+      response => { 
+        this.favorite_product_list = response.products.map( 
+          value => {
+             value.thumbnail = "https://dummyjson.com/image/500"; 
+             return value; 
+            } 
+          );
       }
     )
   }

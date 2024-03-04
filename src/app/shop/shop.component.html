@@ -46,9 +46,9 @@
       </div>
     </div>
 
-    <ng-container *ngFor="let product of shop_products_list; let i = index">
+    <ng-container *ngFor="let product of shop_products_list(); let i = index">
       <div class="w-1/2 mx-auto p-1">
-        <img class="aspect-square hover:scale-125 duration-700" [src]="product.image" routerLink="/shop/{{product.id}}"/>
+        <img class="aspect-square hover:scale-125 duration-700" [src]="product.thumbnail" routerLink="/shop/{{product.id}}"/>
         <p>{{ product.title }}</p>
         <p>{{ product.price }}</p>
       </div>

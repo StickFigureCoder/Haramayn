@@ -3,7 +3,7 @@ import { HomeCarouselComponent } from '../home-carousel/home-carousel.component'
 import { RequestsService } from '../../service/requests.service';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ProductImage, ProductImageAndTitle, ProductImageAndTitleAndPrice } from '../../service/constants.service';
+import { Product } from '../../service/constants.service';
 
 @Component({
   selector: 'app-home',
@@ -13,9 +13,9 @@ import { ProductImage, ProductImageAndTitle, ProductImageAndTitleAndPrice } from
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  categories_list: ProductImageAndTitle[] = [];
-  latest_arrivals_list: ProductImage[] = []
-  our_products_list: ProductImageAndTitleAndPrice[] = [];
+  categories_list: Product[] = [];
+  latest_arrivals_list: Product[] = []
+  our_products_list: Product[] = [];
 
   constructor(private requests_service: RequestsService) {
     
@@ -28,8 +28,7 @@ export class HomeComponent {
           
           this.categories_list.push({
             id: item.id,
-            // image: item.images[0],
-            image: "https://dummyjson.com/image/500",
+            thumbnail: "https://dummyjson.com/image/500",
             title: item.title
           }); 
         
@@ -45,8 +44,7 @@ export class HomeComponent {
           
           this.latest_arrivals_list.push({
             id: item.id,
-            // image: item.images[0],
-            image: "https://dummyjson.com/image/400x600"
+            thumbnail: "https://dummyjson.com/image/400x600"
           }); 
         
         })
@@ -61,8 +59,7 @@ export class HomeComponent {
           
           this.our_products_list.push({
             id: item.id,
-            // image: item.images[0],
-            image: "https://dummyjson.com/image/500",
+            thumbnail: "https://dummyjson.com/image/500",
             title: item.title,
             price: item.price
           }); 

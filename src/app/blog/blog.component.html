@@ -22,7 +22,7 @@
     class="px-4 py-20 hover:scale-125 duration-500"
     *ngFor="let product of favorite_product_list"
   >
-    <img class="aspect-square w-full" [src]="product.image" />
+    <img class="aspect-square w-full" [src]="product.thumbnail" />
     <p class="font-semibold">{{ product.title }}</p>
     <p>{{ product.price }}</p>
   </div>

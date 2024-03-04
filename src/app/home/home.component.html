@@ -24,7 +24,7 @@
       class="px-4 py-20 hover:scale-125 duration-500"
       *ngFor="let category of categories_list"
     >
-      <img class="aspect-square w-full" [src]="category.image" />
+      <img class="aspect-square w-full" [src]="category.thumbnail" />
       <p class="text-center font-semibold">{{ category.title }}</p>
     </div>
   </div>
@@ -55,7 +55,7 @@
       class="px-4 py-20 lg:hover:-mt-20 duration-500"
       *ngFor="let latest_arrival of latest_arrivals_list"
     >
-      <img class="aspect-[1/1.5] w-full" [src]="latest_arrival.image" />
+      <img class="aspect-[1/1.5] w-full" [src]="latest_arrival.thumbnail" />
     </div>
   </div>
 </section>
@@ -86,7 +86,7 @@
       class="px-4 py-20 hover:scale-125 duration-500"
       *ngFor="let our_products of our_products_list"
     >
-      <img class="aspect-square w-full" [src]="our_products.image" />
+      <img class="aspect-square w-full" [src]="our_products.thumbnail" />
       <p class="font-semibold">{{ our_products.title }}</p>
       <p>{{ our_products.price }}</p>
     </div>
