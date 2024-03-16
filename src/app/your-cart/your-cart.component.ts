@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { RequestsService } from '../../service/requests.service';
 import { Product } from '../../service/constants.service';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-your-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './your-cart.component.html',
   styleUrl: './your-cart.component.css'
 })
