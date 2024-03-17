@@ -1,5 +1,6 @@
-<div class="grid lg:grid-cols-2 grid-cols-1 mt-10 ml-10">
-    <div class="grid grid-cols-2 gap-2 w-[75%] mx-auto">
+<div class="grid lg:grid-cols-2 grid-cols-1 mt-10 lg:ml-10">
+    <img class="md:hidden aspect-square w-[90%] mx-auto" src="https://dummyjson.com/image/500">
+    <div class="grid grid-cols-5 max-md:mt-4 md:grid-cols-2 gap-2 w-[75%] mx-auto">
         <img *ngFor="let image_src of product_details().images;" class="aspect-square" src="https://dummyjson.com/image/500">
     </div>
     <div class="w-[75%] mx-auto">
@@ -20,10 +21,10 @@
             <button class="px-4 py-2 ml-0 m-2 border-2 border-black">150 ml</button>
         </div>
         <div class="grid grid-cols-8">
-            <div class="col-span-6"></div>
-            <p class="col-span-2 text-left">Quantity</p>
-            <button class="px-4 py-2 ml-0 m-2 border-2 border-black bg-black text-white col-span-6">Add to cart</button>
-            <div class="px-4 py-2 ml-0 m-2 border-2 border-black col-span-2 inline-flex justify-between">
+            <div class="col-span-6 max-md:col-span-5"></div>
+            <p class="col-span-2 max-md:col-span-3 text-left">Quantity</p>
+            <button class="px-4 py-2 ml-0 m-2 border-2 border-black bg-black col-span-6 text-white max-md:col-span-5">Add to cart</button>
+            <div class="px-4 py-2 ml-0 m-2 border-2 border-black col-span-2 max-md:col-span-3 inline-flex justify-between">
                 <i class="bi bi-plus p-0"></i>
                 <div class="p-0">10</div>
                 <i class="bi bi-dash p-0"></i>
